@@ -30,7 +30,6 @@ Route::resource('products', 'ProductController');
 Route::resource('users', 'UserController');
 
 
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

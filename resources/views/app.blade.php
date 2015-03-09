@@ -39,10 +39,10 @@
 					<li class="dropdown">
 			          	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catalog <span class="caret"></span></a>
 			          	<ul class="dropdown-menu" role="menu">
-				            <li><a href="<% URL::to('catalog/categories') %>">Categories</a></li>
-				            <li><a href="<% URL::to('catalog/products') %>">Products</a></li>
-				            <li><a href="<% URL::to('catalog/brands') %>">Brands</a></li>
-				            <li><a href="<% URL::to('catalog/attributes') %>">Attributes</a></li>
+				            <li><a href="<% URL::to('/catalog/categories') %>">Categories</a></li>
+				            <li><a href="<% URL::to('/catalog/products') %>">Products</a></li>
+				            <li><a href="<% URL::to('/catalog/brands') %>">Brands</a></li>
+				            <li><a href="<% URL::to('/catalog/attributes') %>">Attributes</a></li>
 				         
 			          	</ul>
 			        </li>
