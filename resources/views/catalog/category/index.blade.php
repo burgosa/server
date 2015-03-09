@@ -75,7 +75,7 @@
 						    	
 						    	<select name="category_id" class="form-control">
 								  	
-								  	<? $categories = App\Category::where('category_id',1)->get(array('name','id'))?>
+								  	<?php $categories = App\Category::where('category_id',1)->get(array('name','id'))?>
 								  	<option value="1">Store</option>
 								  	@foreach($categories as $category)
 								  		<option value="<% $category->id %>"><% $category->name %></option>

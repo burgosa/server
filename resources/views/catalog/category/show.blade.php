@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<? $select_array = App\Category::where('category_id',1)->orderBy('name','ASC')->lists('name','id') ?>
+	<?php $select_array = App\Category::where('category_id',1)->orderBy('name','ASC')->lists('name','id') ?>
 
 	<div class="container-fluid">
 
