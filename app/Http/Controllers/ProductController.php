@@ -12,7 +12,7 @@ use App\CategoryProduct;
 use App\Http\Requests;
 
 
-
+d
 class ProductController extends Controller {
 
 	/*
