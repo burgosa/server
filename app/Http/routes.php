@@ -25,6 +25,7 @@ Route::group(['prefix' => 'catalog'], function()
 
 Route::resource('categories', 'CategoryController');
 Route::resource('products', 'ProductController');
+Route::resource('brands', 'BrandController');
 
 });
 

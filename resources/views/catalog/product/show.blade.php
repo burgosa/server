@@ -12,12 +12,16 @@
 				
 			</div>
 		</div>
+		
 		<hr>
+		
 		<ol class="breadcrumb">
 		  	<li><a href="<% URL::to('catalog/products') %>">Products</a></li>
 		  	<li><% $product->name %></li>
 		</ol>
+		
 		<hr>
+
 		<?php if( isset($product->categories[0]->id) ){ $selected_cat = $product->categories[0]->id; }else{ $selected_cat = 0; } ?>
 
 		<div class="row">

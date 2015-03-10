@@ -29,7 +29,7 @@
 		  								<?php $subcats2 = App\Category::where('category_id',$subcat->id)->get(array('id', 'name'))?>
 		  								<ul>
 		  									@foreach($subcats2 as $subcat2)
-		  									<li> <a href="<% URL::to('/catalog/categories/'.$subcat2->id) %>"><% $subcat2->name %></a></li>
+		  									<li> <a href="<% URL::to('/catalog/categories/'.$subcat2->id) %>"><% $subcat2->name %></a> (<% $subcat2->products->count() %>)</li>
 		  									@endforeach
 		  								</ul>
 		  							@endforeach
