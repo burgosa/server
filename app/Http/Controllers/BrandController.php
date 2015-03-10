@@ -68,7 +68,7 @@ class BrandController extends Controller {
 		$brand->created_by = Auth::user()->id;
 		$brand->save();
 
-		Session::flash('success', 'Brand '.$brand->name.' created succesfully');
+		Session::flash('success', 'Brand <b>'.$brand->name.'</b> created succesfully');
 
 		return redirect('catalog/brands/'.$brand->id);
 
@@ -92,7 +92,7 @@ class BrandController extends Controller {
 		
 		$brand->save();
 
-		Session::flash('success', 'Brand '.$brand->name.' updated succesfully');
+		Session::flash('success', 'Brand <b>'.$brand->name.'</b> updated succesfully');
 
 		return redirect('catalog/brands/'.$brand->id);
 		
@@ -103,7 +103,7 @@ class BrandController extends Controller {
 		$brand = Brand::find($id);
         $brand->delete();
 
-        Session::flash('success', 'Brand '.$brand->name.' deleted succesfully');
+        Session::flash('success', 'Brand <b>'.$brand->name.'</b> deleted succesfully');
 
 		return redirect('catalog/brands');
 	}

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 //models and Requests
 use App\Category;
 use App\Http\Requests;
+use \Session;
 
 
 
@@ -61,6 +62,8 @@ class CategoryController extends Controller {
 		$category->created_by = Auth::user()->id;
 		$category->save();
 
+		Session::flash('success', 'Category <b>'.$category->name.'</b> created succesfully');
+
 		return redirect('catalog/categories/'.$category->id);
 
 	}
@@ -77,6 +80,8 @@ class CategoryController extends Controller {
 		$category->updated_by = Auth::user()->id;
 		
 		$category->save();
+
+		Session::flash('success', 'Category <b>'.$category->name.'</b> updated succesfully');
 
 		return redirect('catalog/categories/'.$category->id);
 

@@ -77,7 +77,7 @@
 	</nav>
 	@if(Session::has('success'))
 	
-	<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <% Session::get('success') %></div>
+	<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> {!! Session::get('success') !!}</div>
 
 	@endif
 	@yield('content')

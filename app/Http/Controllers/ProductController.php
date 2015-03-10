@@ -76,7 +76,7 @@ class ProductController extends Controller {
 		$categoryProduct->product_id = $product->id;
 		$categoryProduct->save();
 
-		Session::flash('success', 'Product '.$product->name.' created succesfully');
+		Session::flash('success', 'Product <b>'.$product->name.'</b> created succesfully');
 
 		return redirect('catalog/products/'.$product->id);
 
@@ -136,7 +136,7 @@ class ProductController extends Controller {
 
 		}
 
-		Session::flash('success', 'Product '.$product->name.' updated succesfully');
+		Session::flash('success', 'Product <b>'.$product->name.'</b> updated succesfully');
 
 		return redirect('catalog/products/'.$product->id);
 		
@@ -147,7 +147,7 @@ class ProductController extends Controller {
 		$product = Product::find($id);
         $product->delete();
 
-        Session::flash('success', 'Product '.$product->name.' deleted succesfully');
+        Session::flash('success', 'Product <b>'.$product->name.'</b> deleted succesfully');
 
 		return redirect('catalog/products');
 	}
