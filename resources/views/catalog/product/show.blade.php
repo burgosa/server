@@ -71,14 +71,9 @@
 							<div>
 								
 								<div class="form-group">
-
 							    	<label>Parent Category</label>
-							    	
 							    	{!! Form::select('category_id', [0 => 'Please Select One'] + $category_select_array , $selected_cat , ['class' => 'form-control']) !!}
-
 							  	</div>
-						
-
 							  	<div class="form-group">
 							    	<label>Name</label>
 							    	<input type="text" class="form-control" name="name" value="<% $product->name %>">
@@ -132,6 +127,7 @@
 						
 					</div>
 					<div class="panel-footer">	
+						
 						Created: <% $product->created_at %>, by <% $product->createdBy->email %><br>
 						Last Update: <% $product->updated_at %>, by <% $product->updatedBy->email %>
 						

@@ -50,8 +50,9 @@
 				         
 			          	</ul>
 			        </li>
-			        <!--
-					<li><a href="<% URL::to('/users') %>">Users</a></li>
+			       
+					<li><a href="<% URL::to('/cities') %>">Cities</a></li>
+					<!--
 					<li><a href="<% URL::to('/orders') %>">Orders</a></li>
 					-->
 					

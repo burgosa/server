@@ -29,6 +29,7 @@ Route::resource('brands', 'BrandController');
 
 });
 
+Route::resource('cities', 'CityController');
 Route::resource('users', 'UserController');
 
 
