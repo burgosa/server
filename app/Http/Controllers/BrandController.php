@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 //models and Requests
 use App\Brand;
 use App\Http\Requests;
+use \Session;
 
 
 
@@ -49,8 +50,8 @@ class BrandController extends Controller {
 	public function show($id)
 	{
 
-		$product = Product::find($id);
-		return view('catalog.product.show')->with('product',$product);
+		$brand = Brand::find($id);
+		return view('catalog.brand.show')->with('brand',$brand);
 	}
 
 
@@ -58,23 +59,18 @@ class BrandController extends Controller {
 	{
 		
 		//productdetails
-		$product = new Product;
-		$product->name = $request->name;
-		$product->slug = slug($request->name);
+		$brand = new brand;
+		$brand->name = $request->name;
+		$brand->slug = slug($request->name);
 		
 		//footprint
-		$product->updated_by = Auth::user()->id;
-		$product->created_by = Auth::user()->id;
-		$product->save();
+		$brand->updated_by = Auth::user()->id;
+		$brand->created_by = Auth::user()->id;
+		$brand->save();
 
-		//categoryProduct
-		$categoryProduct = new CategoryProduct;
-		$categoryProduct->category_id = $request->category_id;
-		$categoryProduct->product_id = $product->id;
-		$categoryProduct->save();
+		Session::flash('success', 'Brand '.$brand->name.' created succesfully');
 
-		return redirect('catalog/products/'.$product->id);
-
+		return redirect('catalog/brands/'.$brand->id);
 
 	}
 
@@ -84,37 +80,21 @@ class BrandController extends Controller {
 
 		//return $request->all();
 
-		$product = Product::find($id);
-		$product->name = $request->name;
-		$product->slug = slug($request->name);
-		$product->description = $request->description;
-		$product->price = $request->price;
-		$product->is_active = $request->is_active;
+		$brand = Brand::find($id);
+		$brand->name = $request->name;
+		$brand->slug = slug($request->name);
+		$brand->description = $request->description;
+		$brand->is_active = $request->is_active;
 
 		//footprint
-		$product->updated_by = Auth::user()->id;
-		$product->created_by = Auth::user()->id;
+		$brand->updated_by = Auth::user()->id;
+		$brand->created_by = Auth::user()->id;
 		
-		$product->save();
+		$brand->save();
 
-		//categoryProduct
-		$categoryProduct = CategoryProduct::where('product_id',$id)->first();
+		Session::flash('success', 'Brand '.$brand->name.' updated succesfully');
 
-		if( count($categoryProduct) > 0){
-
-			$categoryProduct->category_id = $request->category_id;
-			$categoryProduct->save();
-
-		}else{
-
-			$categoryProduct = new CategoryProduct;
-			$categoryProduct->category_id = $request->category_id;
-			$categoryProduct->product_id = $product->id;
-			$categoryProduct->save();
-
-		}
-
-		return redirect('catalog/products/'.$product->id);
+		return redirect('catalog/brands/'.$brand->id);
 		
 	}
 

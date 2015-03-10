@@ -3,7 +3,6 @@
 @section('content')
 
 	<?php
-		$select_array = App\Category::orderBy('name','ASC')->lists('name','id');
 		$status[0] = '<span class="label label-default">Innactive</span>';
 		$status[1] = '<span class="label label-success">Active</span>';
 	?>
@@ -35,11 +34,11 @@
 						@foreach($brands as $brand)
 						<tr>
 							<td><% $brand->id %></td>
-							<td><% $brand->name %></td>
+							<td><a href="<% URL::to('/catalog/brands/'.$brand->id) %>"><% $brand->name %></a></td>
 							<td><% $brand->name %></td>
 							<td>{!! $status[$brand->is_active] !!}</td>
-							<td><% $product->created_at %></td>
-							<td><% $product->updated_at %></td>
+							<td><% $brand->created_at %></td>
+							<td><% $brand->updated_at %></td>
 						</tr>
 						@endforeach
 					</tbody>
@@ -58,14 +57,22 @@
 		      		<div class="modal-body">
 
 		      			@if($errors->has())
-		      				<script> $('#myModal').modal('show');</script>
+		      				<script> 
+		      					$( document ).ready(function() {
+		      						$('#myModal').modal('show');
+		      					});
+		      				</script>
 							@foreach ($errors->all() as $message) 
 								<div class="alert alert-danger"><%$message%></div>
 							@endforeach
 						@endif
 
 						@if(Session::has('failure'))
-							<script> $('#myModal').modal('show');</script>
+							<script> 
+		      					$( document ).ready(function() {
+		      						$('#myModal').modal('show');
+		      					});
+		      				</script>
 							<div class="alert alert-danger"><%Session::get('failure')%></div>
 						@endif
 		        	
@@ -92,8 +99,4 @@
 
 	</div>
 
-
-	<script>
-
-	</script>
 @endsection
