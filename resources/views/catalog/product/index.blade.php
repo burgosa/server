@@ -24,9 +24,9 @@
 					<thead>
 						<tr>
 							<th>id</th>
+							<th>Name</th>
 							<th>Category</th>
 							<th>Brand</th>
-							<th>Name</th>
 							<th>Price</th>
 							<th>Status</th>
 							<th>created_at</th>
@@ -37,13 +37,18 @@
 						@foreach($products as $product)
 						<tr>
 							<td><% $product->id %></td>
+							<td><a href="<% URL::to('catalog/products/'.$product->id) %>"><% $product->name %></a></td>
 							<td>
 								@foreach($product->categories as $category)
 									<% $category->name %></a>
 								@endforeach
 							</td>
-							<td>Cat</td>
-							<td><a href="<% URL::to('catalog/products/'.$product->id) %>"><% $product->name %></a></td>
+							<td>
+								@foreach($product->brand as $brand)
+									<% $brand->name %></a>
+								@endforeach
+								
+							</td>
 							<td><% $product->price %></td>
 							<td>{!! $status[$product->is_active] !!}</td>
 							<td><% $product->created_at %></td>
@@ -65,24 +70,14 @@
 		      		</div>
 		      		<div class="modal-body">
 
-		      			@if($errors->has())
-		      				<script> $('#myModal').modal('show');</script>
-							@foreach ($errors->all() as $message) 
-								<div class="alert alert-danger"><%$message%></div>
-							@endforeach
-						@endif
-
-						@if(Session::has('failure'))
-							<script> $('#myModal').modal('show');</script>
-							<div class="alert alert-danger"><%Session::get('failure')%></div>
-						@endif
+		      			@include('partial.error')
 		        	
 		      			<form  role="form" method="POST" action="/catalog/products">
 
 							<input type="hidden" name="_token" value="<% csrf_token() %>">
 
 							<div class="form-group">
-						    	<input type="text" class="form-control" name="name" placeholder="Product Name">
+						    	<input type="text" class="form-control" name="name" value="<% old('name') %>" placeholder="Product Name">
 						  	</div>
 
 						  	<div class="form-group">

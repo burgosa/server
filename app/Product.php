@@ -24,4 +24,10 @@ class Product extends Model {
 
     }
 
+    public function brand()
+    {   
+        return $this->belongsToMany('App\Brand','brands_products')->withPivot('brand_id', 'product_id');
+
+    }
+
 }

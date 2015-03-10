@@ -38,7 +38,7 @@
                                    <!--  <li><a href="#"></a></li>
 
                                     <li class="divider"></li> -->
-                                    {!! Form::open(array('url' => 'catalog/products/' . $brand->id, 'style' => '  padding: 3px 10px;')) !!}
+                                    {!! Form::open(array('url' => 'catalog/brands/' . $brand->id, 'style' => '  padding: 3px 10px;')) !!}
                     					{!! Form::hidden('_method', 'DELETE') !!}
                     					{!! Form::submit('Delete', array('class' => 'btn btn-link btn-sm')) !!}
                 					{!! Form::close() !!}
@@ -51,25 +51,7 @@
 
 					<div class="panel-body">
 
-						@if($errors->has())
-		      				<script> 
-		      					$( document ).ready(function() {
-		      						$('#myModal').modal('show');
-		      					});
-		      				</script>
-							@foreach ($errors->all() as $message) 
-								<div class="alert alert-danger"><%$message%></div>
-							@endforeach
-						@endif
-
-						@if(Session::has('failure'))
-							<script> 
-		      					$( document ).ready(function() {
-		      						$('#myModal').modal('show');
-		      					});
-		      				</script>
-							<div class="alert alert-danger"><%Session::get('failure')%></div>
-						@endif
+						@include('partial.error')
 						
 						<form role="form" method="POST" action="/catalog/brands/<% $brand->id %>" accept-charset="UTF-8">
 							

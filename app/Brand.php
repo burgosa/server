@@ -17,12 +17,11 @@ class Brand extends Model {
     {
         return $this->belongsTo('App\User','updated_by','id');
     }
-    /*
-    public function categories()
+    
+    public function products()
     {   
-        return $this->belongsToMany('App\Category','categories_products')->withPivot('category_id', 'product_id');
+        return $this->belongsToMany('App\Product','brands_products')->withPivot('product_id', 'brand_id');
 
     }
-    */
 
 }

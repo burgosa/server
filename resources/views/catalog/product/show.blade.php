@@ -2,7 +2,15 @@
 
 @section('content')
 
-	<?php $select_array = App\Category::where('category_id','<>',1)->where('category_id','<>',0)->lists('name','id') ?>
+	<?php 
+		
+		$category_select_array = App\Category::where('category_id','<>',1)->where('category_id','<>',0)->lists('name','id');
+	 	$brand_select_array = App\Brand::lists('name','id');
+
+	 	if($product->categories->count() > 0){ $selected_cat = $product->categories[0]->id; }else{ $selected_cat = 0; }
+	 	if($product->brand->count() > 0){ $selected_brand = $product->brand[0]->id; }else{ $selected_brand = 0; }
+	
+	?>
 
 	<div class="container-fluid">
 
@@ -22,7 +30,7 @@
 		
 		<hr>
 
-		<?php if( isset($product->categories[0]->id) ){ $selected_cat = $product->categories[0]->id; }else{ $selected_cat = 0; } ?>
+		<?php  ?>
 
 		<div class="row">
 			<div class="col-md-6">
@@ -53,17 +61,7 @@
 
 					<div class="panel-body">
 
-						@if($errors->has())
-		      				<script> $('#myModal').modal('show');</script>
-							@foreach ($errors->all() as $message) 
-								<div class="alert alert-danger"><%$message%></div>
-							@endforeach
-						@endif
-
-						@if(Session::has('failure'))
-							<script> $('#myModal').modal('show');</script>
-							<div class="alert alert-danger"><%Session::get('failure')%></div>
-						@endif
+						@include('partial.error')
 						
 						<form role="form" method="POST" action="/catalog/products/<% $product->id %>" accept-charset="UTF-8">
 							
@@ -76,7 +74,7 @@
 
 							    	<label>Parent Category</label>
 							    	
-							    	{!! Form::select('category_id', [0 => 'Please Select One'] + $select_array , $selected_cat , ['class' => 'form-control']) !!}
+							    	{!! Form::select('category_id', [0 => 'Please Select One'] + $category_select_array , $selected_cat , ['class' => 'form-control']) !!}
 
 							  	</div>
 						
@@ -103,6 +101,16 @@
 
 							</div>
 							<hr>
+							<div>
+								
+								<div class="form-group">
+
+							    	<label>Brand</label>
+							    	
+							    	{!! Form::select('brand_id', [0 => 'Please Select One'] + $brand_select_array , $selected_brand , ['class' => 'form-control']) !!}
+
+							  	</div>
+							</div>
 							<div>
 
 								<div class="checkbox">

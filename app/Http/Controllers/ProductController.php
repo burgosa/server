@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 //models and Requests
 use App\Product;
 use App\CategoryProduct;
+use App\BrandProduct;
 use App\Http\Requests;
+use \Session;
 
 
 
@@ -74,6 +76,8 @@ class ProductController extends Controller {
 		$categoryProduct->product_id = $product->id;
 		$categoryProduct->save();
 
+		Session::flash('success', 'Product '.$product->name.' created succesfully');
+
 		return redirect('catalog/products/'.$product->id);
 
 
@@ -115,6 +119,25 @@ class ProductController extends Controller {
 
 		}
 
+		//brandProduct
+		$brandProduct = BrandProduct::where('product_id',$id)->first();
+
+		if( count($brandProduct) > 0){
+
+			$brandProduct->brand_id = $request->brand_id;
+			$brandProduct->save();
+
+		}else{
+
+			$brandProduct = new BrandProduct;
+			$brandProduct->brand_id = $request->brand_id;
+			$brandProduct->product_id = $product->id;
+			$brandProduct->save();
+
+		}
+
+		Session::flash('success', 'Product '.$product->name.' updated succesfully');
+
 		return redirect('catalog/products/'.$product->id);
 		
 	}
@@ -123,6 +146,8 @@ class ProductController extends Controller {
 	{
 		$product = Product::find($id);
         $product->delete();
+
+        Session::flash('success', 'Product '.$product->name.' deleted succesfully');
 
 		return redirect('catalog/products');
 	}

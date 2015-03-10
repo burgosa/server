@@ -46,7 +46,7 @@
 				            <li><a href="<% URL::to('/catalog/categories') %>">Categories</a></li>
 				            <li><a href="<% URL::to('/catalog/products') %>">Products</a></li>
 				            <li><a href="<% URL::to('/catalog/brands') %>">Brands</a></li>
-				            <li><a href="<% URL::to('/catalog/attributes') %>">Attributes</a></li>
+				            <!--<li><a href="<% URL::to('/catalog/attributes') %>">Attributes</a></li>-->
 				         
 			          	</ul>
 			        </li>
@@ -77,7 +77,7 @@
 	</nav>
 	@if(Session::has('success'))
 	
-	<div class="alert alert-info" role="alert"><% Session::get('success') %></div>
+	<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <% Session::get('success') %></div>
 
 	@endif
 	@yield('content')

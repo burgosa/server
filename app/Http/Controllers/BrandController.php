@@ -100,10 +100,12 @@ class BrandController extends Controller {
 
 	public function destroy($id)
 	{
-		$product = Product::find($id);
-        $product->delete();
+		$brand = Brand::find($id);
+        $brand->delete();
 
-		return redirect('catalog/products');
+        Session::flash('success', 'Brand '.$brand->name.' deleted succesfully');
+
+		return redirect('catalog/brands');
 	}
 
 }
