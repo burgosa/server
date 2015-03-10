@@ -33,7 +33,8 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				
+				@if (Auth::guest())
+				@else
 				<ul class="nav navbar-nav">
 					
 					<li class="dropdown">
@@ -52,6 +53,7 @@
 					-->
 					
 				</ul>
+				@endif
 
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
