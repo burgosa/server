@@ -2,14 +2,13 @@
 
 @section('content')
 
-	<?
+	<?php
 		$select_array = App\Category::orderBy('name','ASC')->lists('name','id');
 		$status[0] = '<span class="label label-default">Innactive</span>';
 		$status[1] = '<span class="label label-success">Active</span>';
 	?>
 
 	<div class="container-fluid">
-
 		<div class="row">
 			<div class="col-md-12">
 				<h4> Products <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"> Create New Product</button></h4>  
@@ -26,6 +25,7 @@
 							<th>Category</th>
 							<th>Brand</th>
 							<th>Name</th>
+							<th>Price</th>
 							<th>Status</th>
 							<th>created_at</th>
 							<th>updated_at</th>
@@ -42,6 +42,7 @@
 							</td>
 							<td>Cat</td>
 							<td><a href="<% URL::to('catalog/products/'.$product->id) %>"><% $product->name %></a></td>
+							<td><% $product->price %></td>
 							<td>{!! $status[$product->is_active] !!}</td>
 							<td><% $product->created_at %></td>
 							<td><% $product->updated_at %></td>
@@ -97,7 +98,6 @@
 		      		</div>
 		      		<div class="modal-footer">
 		        		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-		        		
 		      		</div>
 		    	</div><!-- /.modal-content -->
 		  	</div><!-- /.modal-dialog -->
