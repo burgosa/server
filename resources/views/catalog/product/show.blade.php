@@ -24,7 +24,28 @@
 			<div class="col-md-6">
 				<div class="panel panel-default">
 
-					<div class="panel-heading"> <% $product->name %> </div>
+					<div class="panel-heading"> 
+						<% $product->name %> 
+						<div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                   <!--  <li><a href="#"></a></li>
+
+                                    <li class="divider"></li> -->
+                                    {!! Form::open(array('url' => 'catalog/products/' . $product->id, 'style' => '  padding: 3px 10px;')) !!}
+                    					{!! Form::hidden('_method', 'DELETE') !!}
+                    					{!! Form::submit('Delete', array('class' => 'btn btn-link btn-sm')) !!}
+                					{!! Form::close() !!}
+                					
+                                </ul>
+                            </div>
+                        </div>
+
+					</div>
 
 					<div class="panel-body">
 
@@ -92,7 +113,7 @@
 
 							</div>
 							<hr>
-							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="submit" class="btn btn-default">Save</button>
 
 						</form>
 
@@ -101,6 +122,7 @@
 					<div class="panel-footer">	
 						Created: <% $product->created_at %>, by <% $product->createdBy->email %><br>
 						Last Update: <% $product->updated_at %>, by <% $product->updatedBy->email %>
+						
 					<div>
 				</div>
 			</div>

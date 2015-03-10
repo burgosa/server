@@ -10,12 +10,14 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
-				<h4> Products <button class="btn btn-default pull-right" data-toggle="modal" data-target="#myModal"> Create New Product</button></h4>  
-				<hr>
+			<div class="col-md-6">
+				<h4> Products </h4>
+			</div>
+			<div class="col-md-6 text-right">
+				<a class="btn btn-default" data-toggle="modal" data-target="#myModal"> <i class="fa fa-plus-circle"></i> Product</a>
 			</div>
 		</div>
-
+		<hr>
 		<div class="row">
 			<div class="col-md-12">
 				<table class="table-condensed table" style="font-size:0.85em">

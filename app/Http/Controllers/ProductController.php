@@ -12,7 +12,7 @@ use App\CategoryProduct;
 use App\Http\Requests;
 
 
-d
+
 class ProductController extends Controller {
 
 	/*
@@ -117,7 +117,14 @@ class ProductController extends Controller {
 
 		return redirect('catalog/products/'.$product->id);
 		
+	}
 
+	public function destroy($id)
+	{
+		$product = Product::find($id);
+        $product->delete();
+
+		return redirect('catalog/products');
 	}
 
 }
