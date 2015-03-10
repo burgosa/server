@@ -45,7 +45,6 @@ class CategoryController extends Controller {
 
 	public function show($id)
 	{
-
 		$category = Category::find($id);
 		return view('catalog.category.show')->with('category',$category);
 	}
@@ -64,7 +63,6 @@ class CategoryController extends Controller {
 
 		return redirect('catalog/categories/'.$category->id);
 
-
 	}
 
 	public function update($id, Requests\UpdateCategoryRequest $request)
@@ -79,7 +77,6 @@ class CategoryController extends Controller {
 		$category->updated_by = Auth::user()->id;
 		
 		$category->save();
-
 
 		return redirect('catalog/categories/'.$category->id);
 
