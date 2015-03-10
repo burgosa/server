@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<? $select_array = App\Category::where('category_id','<>',1)->where('category_id','<>',0)->lists('name','id') ?>
+	<?php $select_array = App\Category::where('category_id','<>',1)->where('category_id','<>',0)->lists('name','id') ?>
 
 	<div class="container-fluid">
 
@@ -18,7 +18,7 @@
 		  	<li><% $product->name %></li>
 		</ol>
 		<hr>
-		<?php if(isset($product->categories[0]->id)){ $selected_cat = $product->categories[0]->id; }else{ $selected_cat = 0; } ?>
+		<?php if( isset($product->categories[0]->id) ){ $selected_cat = $product->categories[0]->id; }else{ $selected_cat = 0; } ?>
 
 		<div class="row">
 			<div class="col-md-6">
