@@ -52,6 +52,7 @@
 			        </li>
 			       
 					<li><a href="<% URL::to('/cities') %>">Cities</a></li>
+					<li><a href="<% URL::to('/clients') %>">Clients</a></li>
 					<!--
 					<li><a href="<% URL::to('/orders') %>">Orders</a></li>
 					-->

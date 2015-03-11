@@ -64,6 +64,18 @@ return [
 			'strict'    => false,
 		],
 
+		'mysql2' => [
+			'driver'    => 'mysql',
+			'host'      => getenv('DB_HOST'),
+			'database'  => 'website',
+			'username'  => getenv('DB_USERNAME'),
+			'password'  => getenv('DB_PASSWORD'),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
